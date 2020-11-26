@@ -203,3 +203,27 @@ Arrays TODO
     - this means runtime type checking, and I think runtime memory
       allocation (right now memory is allocated once, in one chunk, when a
       simulation is created, which is fast and optimial).
+
+Personal log
+------------
+
+After updating the `package.json` and installing all dependencies using `pnpm`, I can build the library using the provided `npm` scripts:
+
+- `npm run build:pre` to create the folders
+- `npm run build:runtime0`
+- `npm run build:runtime1`
+- `npm run build:lib`
+- `npm run build:build`
+
+On Windows, I don't have `make` installed, so I've used `wsl` v2 (Windows Subsystem for Linux) to run the regression tests. After installing `nodejs` on `wsl` using:
+
+```bash
+curl -sL https://deb.nodesource.com/setup_15.x | sudo -E bash -
+sudo apt-get install -y nodejs
+```
+
+The tests can be run as follows (NOTE: I needed to change the line-endings of the `./bin/mdl.js` to UNIX. One way is to open the file in `vscode`, open settings, search for `files:eol`, and use `\\n` to save the file. Next, put it back to `auto` again).
+
+```bash
+make test rtest
+```
